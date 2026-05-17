@@ -23,6 +23,25 @@ FlameBash turns your Bash shell into a practical and visually appealing developm
 - **Fast maintenance**: `update`, `clean`, `actu`, `clear`
 - **Bash compatibility**: designed for interactive shells and works with `bash-completion`
 
+## Commands
+
+### Git
+- `gc <message>`: stage all changes and create a commit quickly.
+- `gp <message>`: push changes to the remote and optionally create a signed tag.
+- Git status is displayed directly in the prompt for easy tracking.
+
+### Development
+- `exec <file>`: compile and execute a C program using `gcc -Wall -Wextra -Werror -fsanitize=address -g`, then remove the temporary binary.
+- `env`: create and activate a local Python virtual environment in `.env`, and update `.gitignore`.
+- `py`: run Python scripts with `python3`.
+- `pyc`: compile a Python script to `.pyc`.
+
+### Maintenance
+- `update`: update Debian/Ubuntu packages, clean packages, refresh drivers, and update snaps/flatpaks.
+- `clean`: remove orphaned packages and clean the APT cache.
+- `actu`: reload the `.bashrc` configuration and refresh the terminal dashboard.
+- `clear`: clear the terminal and redisplay the system dashboard.
+
 ## Quick Usage Example
 ```bash
 # Copy the .bashrc file to your home directory
@@ -56,6 +75,12 @@ $ gp "v1.1.0"
 ```bash
 $ py my_script.py
 $ pyc my_script.py
+```
+
+### Compile and execute a C program
+```bash
+$ exec program.c
+# compiles program.c with gcc and runs the resulting binary
 ```
 
 ### Reload your configuration after editing
