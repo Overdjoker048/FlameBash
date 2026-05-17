@@ -184,13 +184,6 @@ env() {
     if [ -f ".env/bin/activate" ]; then
         source .env/bin/activate
     fi
-
-    if [ ! -f ".gitignore" ]; then
-        echo -e ".env\n__pycache__" > .gitignore
-    else
-        grep -qxF ".env" .gitignore || echo ".env" >> .gitignore
-        grep -qxF "__pycache__" .gitignore || echo "__pycache__" >> .gitignore
-    fi
 }
 
 alias ll='ls -alF'
