@@ -3,67 +3,67 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Version](https://img.shields.io/badge/Version-1.1.0-yellow.svg)
 
-Une configuration `.bashrc` légère et fonctionnelle pour développeurs Linux, conçue pour améliorer votre terminal avec un prompt riche, un tableau de bord système et des commandes utilitaires.
+A lightweight and functional `.bashrc` configuration for Linux developers, designed to improve your terminal with a rich prompt, system dashboard, and useful commands.
 
 ## Description
 
-FlameBash transforme votre Bash en un environnement de développement pratique et visuel. Il offre :
+FlameBash turns your Bash shell into a practical and visually appealing development environment. It provides:
 
-- Un prompt coloré affichant utilisateur/hôte, répertoire, branche Git et état du dépôt
-- Un tableau de bord système au démarrage avec OS, noyau, CPU, RAM, disque, IP et plus
-- Des alias utiles pour Python, Git et les opérations communes
-- Des commandes de maintenance pour mise à jour, nettoyage et rechargement du shell
+- A colorful prompt showing user/host, current directory, Git branch, and repository status
+- A startup system dashboard with OS, kernel, CPU, RAM, disk, IP, and more
+- Useful aliases for Python, Git, and common operations
+- Maintenance commands for updating, cleaning, and reloading the shell
 
-## Fonctionnalités clés
+## Key Features
 
-- **Prompt enrichi** : informations système et Git dans un prompt clair et coloré
-- **Dashboard de démarrage** : aperçu instantané de l’état du système
-- **Git simplifié** : commandes `gc`, `gp`, et statut Git directement dans le prompt
-- **Alias pratiques** : `py`, `pyc`, `ll`, `la`, `l`, etc.
-- **Maintenance rapide** : `update`, `clean`, `actu`, `clear`
-- **Compatibilité Bash** : conçu pour s’exécuter en shell interactif et tirer parti de `bash-completion`
+- **Enhanced prompt**: system and Git information in a clear, colorful prompt
+- **Startup dashboard**: instant overview of system status when opening a terminal
+- **Simplified Git**: `gc`, `gp`, and Git status displayed directly in the prompt
+- **Practical aliases**: `py`, `pyc`, `ll`, `la`, `l`, etc.
+- **Fast maintenance**: `update`, `clean`, `actu`, `clear`
+- **Bash compatibility**: designed for interactive shells and works with `bash-completion`
 
-## Exemple d’utilisation rapide
+## Quick Usage Example
 ```bash
-# Copier le fichier .bashrc dans votre répertoire personnel
+# Copy the .bashrc file to your home directory
 $ cp FlameBash/.bashrc ~/.bashrc
 
-# Charger la configuration
+# Load the configuration
 $ source ~/.bashrc
 
-# Utiliser les alias et commandes incluses
+# Use the included aliases and commands
 $ py script.py
-$ gc "mise à jour du prompt"
+$ gc "update prompt"
 $ update
 $ actu
 ```
 
-## Exemples d’utilisation
+## Usage Examples
 
-### Vérifier l’état Git et faire un commit rapide
+### Check Git status and create a quick commit
 ```bash
-$ gc "mise à jour de la doc"
-# ajoute tous les fichiers et crée un commit
+$ gc "update documentation"
+# adds all files and creates a commit
 ```
 
-### Pousser vers le remote avec une étiquette
+### Push to remote with a tag
 ```bash
 $ gp "v1.1.0"
-# pousse les modifications et crée une étiquette signée si nécessaire
+# pushes changes and creates a signed tag if needed
 ```
 
-### Utiliser les alias Python
+### Use Python aliases
 ```bash
-$ py mon_script.py
-$ pyc mon_script.py
+$ py my_script.py
+$ pyc my_script.py
 ```
 
-### Rechargez votre configuration après modification
+### Reload your configuration after editing
 ```bash
 $ actu
 ```
 
-### Nettoyer le système et le cache APT
+### Clean the system and APT cache
 ```bash
 $ update
 $ clean
@@ -71,11 +71,11 @@ $ clean
 
 ## Installation
 
-1. Copier ou lier le fichier `.bashrc` dans votre dossier personnel.
-2. Charger la configuration :
+1. Copy or symlink the `.bashrc` file to your home directory.
+2. Load the configuration:
 ```bash
 $ source ~/.bashrc
 ```
 
-## Licence
-Ce projet est distribué sous licence MIT. Voir le fichier `LICENSE` pour les détails.
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
