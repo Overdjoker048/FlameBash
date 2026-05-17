@@ -1,69 +1,50 @@
 # FlameBash
+![Shell](https://img.shields.io/badge/Shell-Bash-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Version](https://img.shields.io/badge/Version-1.1.0-yellow.svg)
 
-Version : `1.1.0`
+Une configuration `.bashrc` légère et fonctionnelle pour développeurs Linux, conçue pour améliorer votre terminal avec un prompt riche, un tableau de bord système et des commandes utilitaires.
 
-Une configuration `.bashrc` légère et fonctionnelle pour développeurs sous Linux. Ce projet offre un prompt enrichi, un tableau de bord système à l’ouverture, des alias utiles, de l’intégration Git et des commandes de maintenance.
+## Description
 
-## UI
-- Affichage de démarrage détaillé avec informations système : OS, noyau, architecture, uptime, CPU, GPU, RAM, disque, IP, shell, session, résolution, virtualisation, init, et modèle de PC.
-- Prompt coloré avec : utilisateur/hôte, répertoire courant, branche Git et état du dépôt, ainsi que l’environnement virtuel Python.
+FlameBash transforme votre Bash en un environnement de développement pratique et visuel. Il offre :
 
-Exemple :
+- Un prompt coloré affichant utilisateur/hôte, répertoire, branche Git et état du dépôt
+- Un tableau de bord système au démarrage avec OS, noyau, CPU, RAM, disque, IP et plus
+- Des alias utiles pour Python, Git et les opérations communes
+- Des commandes de maintenance pour mise à jour, nettoyage et rechargement du shell
+
+## Fonctionnalités clés
+
+- **Prompt enrichi** : informations système et Git dans un prompt clair et coloré
+- **Dashboard de démarrage** : aperçu instantané de l’état du système
+- **Git simplifié** : commandes `gc`, `gp`, et statut Git directement dans le prompt
+- **Alias pratiques** : `py`, `pyc`, `ll`, `la`, `l`, etc.
+- **Maintenance rapide** : `update`, `clean`, `actu`, `clear`
+- **Compatibilité Bash** : conçu pour s’exécuter en shell interactif et tirer parti de `bash-completion`
+
+## Exemple d’utilisation rapide
 ```bash
-# dans un terminal normal
-$ cd ~/projet
-$ echo "hello"
-```
-Le prompt affichera un bloc supérieur avec le système, puis un prompt `╭─ user@host | ~/projet`.
+# Copier le fichier .bashrc dans votre répertoire personnel
+$ cp FlameBash/.bashrc ~/.bashrc
 
-## Git
-- `gc <msg>` : ajoute tous les fichiers du dépôt racine et crée un commit.
-- `gp <msg>` : pousse vers le remote ; si un message est fourni, crée d’abord une étiquette signée.
-- Le prompt affiche la branche Git courante et marque un statut non propre si des modifications existent.
+# Charger la configuration
+$ source ~/.bashrc
 
-Exemples :
-```bash
-$ gc "mise à jour de la doc"
-$ gp "v1.1.0"
-```
-
-## Dev
-- `exe` : compilation et exécution d’un fichier C avec `gcc -Wall -Wextra -Werror -fsanitize=address -g`, puis suppression du binaire temporaire.
-- `env` : création/activation d’un environnement Python local `.env` et mise à jour de `.gitignore`.
-- Alias shell utiles :
-  - `py` → `python3`
-  - `pyc` → compile un script Python en `.pyc`
-  - `ll`, `la`, `l` → listings `ls` plus pratiques
-
-Exemples :
-```bash
-$ exe programme.c
-$ env
+# Utiliser les alias et commandes incluses
 $ py script.py
-$ pyc script.py
-```
-
-## Maintenance
-- `update` : met à jour le système Debian/Ubuntu, nettoie les paquets, met à jour les drivers et rafraîchit les snaps/flatpaks.
-- `clean` : supprime les paquets orphelins et nettoie le cache APT.
-- `actu` : recharge le `.bashrc` et rafraîchit l’affichage.
-- `clear` : efface le terminal puis réaffiche le dashboard système.
-
-Exemples :
-```bash
+$ gc "mise à jour du prompt"
 $ update
-$ clean
 $ actu
-$ clear
 ```
 
 ## Installation
-1. Copier le fichier `.bashrc` dans votre répertoire personnel.
+
+1. Copier ou lier le fichier `.bashrc` dans votre dossier personnel.
 2. Charger la configuration :
 ```bash
 $ source ~/.bashrc
 ```
 
-## Notes
-- Le code s’exécute uniquement en mode shell interactif.
-- La complétion Bash est activée si `bash-completion` est installé.
+## Licence
+Ce projet est distribué sous licence MIT. Voir le fichier `LICENSE` pour les détails.
