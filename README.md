@@ -38,6 +38,37 @@ $ update
 $ actu
 ```
 
+## Exemples d’utilisation
+
+### Vérifier l’état Git et faire un commit rapide
+```bash
+$ gc "mise à jour de la doc"
+# ajoute tous les fichiers et crée un commit
+```
+
+### Pousser vers le remote avec une étiquette
+```bash
+$ gp "v1.1.0"
+# pousse les modifications et crée une étiquette signée si nécessaire
+```
+
+### Utiliser les alias Python
+```bash
+$ py mon_script.py
+$ pyc mon_script.py
+```
+
+### Rechargez votre configuration après modification
+```bash
+$ actu
+```
+
+### Nettoyer le système et le cache APT
+```bash
+$ update
+$ clean
+```
+
 ## Installation
 
 1. Copier ou lier le fichier `.bashrc` dans votre dossier personnel.
