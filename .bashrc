@@ -151,16 +151,16 @@ exe() {
 # ==================================================
 
 # gc <msg> → git add . (repo root) + commit
-alias gc='bash -c '\'' \
-root=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "Pas dans un repo git"; exit 1; }; \
-cd "$root" || exit; \
-git add .; \
-if [ $# -gt 0 ]; then \
-    git commit -m "$*"; \
-else \
-    git commit -m "a"; \
-fi \
-'\'''
+alias gc='bash -c '\''
+  root=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "Pas dans un repo git"; exit 1; }
+  cd "$root" || exit
+  git add .
+  if [ $# -gt 0 ]; then
+    git commit -m "$*"
+  else
+    git commit -m "a"
+  fi
+'\'' --'
 
 # gp <msg> → tag + push --follow-tags
 alias gp='bash -c '\'' \
@@ -176,14 +176,11 @@ fi \
 # ==================================================
 # ALIASES
 # ==================================================
-env() {
+venv() {
     if [ ! -d ".env" ]; then
         python3 -m venv .env
     fi
-
-    if [ -f ".env/bin/activate" ]; then
-        source .env/bin/activate
-    fi
+    source .env/bin/activate
 }
 
 alias ll='ls -alF'
@@ -201,11 +198,11 @@ alias pyc='python3 -OO -c "import py_compile, sys; py_compile.compile(sys.argv[1
 
 update() {
     echo "📦 Mise à jour du système..."
-    sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y
-    sudo apt autoremove -y && sudo apt autoclean -y
-    sudo apt install --install-recommends linux-generic -y
-    command -v ubuntu-drivers >/dev/null 2>&1 && sudo ubuntu-drivers autoinstall || true
-    command -v snap >/dev/null 2>&1 && sudo snap refresh || true
+    apt update -y && apt upgrade -y && apt full-upgrade -y
+    apt autoremove -y && apt autoclean -y
+    apt install --install-recommends linux-generic -y
+    command -v ubuntu-drivers >/dev/null 2>&1 && ubuntu-drivers autoinstall || true
+    command -v snap >/dev/null 2>&1 && snap refresh || true
     command -v flatpak >/dev/null 2>&1 && flatpak update -y || true
     [ -f /var/run/reboot-required ] && echo "⚠️  Redémarrage requis" || echo "✔️ Pas de redémarrage nécessaire"
 }
