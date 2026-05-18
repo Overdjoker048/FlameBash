@@ -1,7 +1,7 @@
 # FlameBash
 ![Shell](https://img.shields.io/badge/Shell-Bash-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.1.0-yellow.svg)
+![Version](https://img.shields.io/badge/Version-1.1.1-yellow.svg)
 
 A lightweight and functional `.bashrc` configuration for Linux developers, designed to improve your terminal with a rich prompt, system dashboard, and useful commands.
 
