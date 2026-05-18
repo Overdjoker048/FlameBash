@@ -79,7 +79,7 @@ display() {
 "\e[38;2;255;85;0m   ^?77!~~^^^~~!7^ .^?????JJJJ!.\e[0m   ${C_LABEL}Resolution:${C_RESET} $RESOLUTION"
 "\e[38;2;255;80;0m    .~777!!!!!!!7! .~JJJJYYJ!.\e[0m     ${C_LABEL}Virt:${C_RESET}       $VIRT"
 "\e[38;2;255;75;0m      .:!7?7777??~ .!YY5YJ~.\e[0m       ${C_LABEL}Init:${C_RESET}       $INIT_SYSTEM"
-"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m          ${C_LABEL}Version:${C_RESET}    1.1.0"
+"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m          ${C_LABEL}Version:${C_RESET}    1.1.1"
 "\e[38;2;255;65;0m            .:!JY. .~.\e[0m "
     )
 
