@@ -19,7 +19,7 @@ FlameBash turns your Bash shell into a practical and visually appealing developm
 - **Enhanced prompt**: system and Git information in a clear, colorful prompt
 - **Startup dashboard**: instant overview of system status when opening a terminal
 - **Simplified Git**: `gc`, `gp`, and Git status displayed directly in the prompt
-- **Practical aliases**: `py`, `pyc`, `ll`, `la`, `l`, `venv`, `exec`.
+- **Practical aliases**: `py`, `pyc`, `ll`, `la`, `l`, `venv`, `exe`.
 - **Fast maintenance**: `update`, `clean`, `actu`, `clear`
 - **Bash compatibility**: designed for interactive shells and works with `bash-completion`
 
@@ -79,7 +79,7 @@ $ pyc my_script.py
 
 ### Compile and execute a C program
 ```bash
-$ exec program.c
+$ exe program.c
 # compiles program.c with gcc and runs the resulting binary
 ```
 
