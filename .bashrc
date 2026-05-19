@@ -79,7 +79,7 @@ display() {
 "\e[38;2;255;85;0m   ^?77!~~^^^~~!7^ .^?????JJJJ!.\e[0m   ${C_LABEL}Resolution:${C_RESET} $RESOLUTION"
 "\e[38;2;255;80;0m    .~777!!!!!!!7! .~JJJJYYJ!.\e[0m     ${C_LABEL}Virt:${C_RESET}       $VIRT"
 "\e[38;2;255;75;0m      .:!7?7777??~ .!YY5YJ~.\e[0m       ${C_LABEL}Init:${C_RESET}       $INIT_SYSTEM"
-"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m          ${C_LABEL}Version:${C_RESET}    1.1.1"
+"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m          ${C_LABEL}Version:${C_RESET}    1.1.2"
 "\e[38;2;255;65;0m            .:!JY. .~.\e[0m "
     )
 
@@ -197,14 +197,27 @@ alias pyc='python3 -OO -c "import py_compile, sys; py_compile.compile(sys.argv[1
 # ==================================================
 
 update() {
+    if [ "$EUID" -ne 0 ]; then
+        sudo bash -c "$(declare -f update); update"
+        return
+    fi
     echo "📦 Mise à jour du système..."
-    apt update -y && apt upgrade -y && apt full-upgrade -y
-    apt autoremove -y && apt autoclean -y
-    apt install --install-recommends linux-generic -y
-    command -v ubuntu-drivers >/dev/null 2>&1 && ubuntu-drivers autoinstall || true
-    command -v snap >/dev/null 2>&1 && snap refresh || true
-    command -v flatpak >/dev/null 2>&1 && flatpak update -y || true
-    [ -f /var/run/reboot-required ] && echo "⚠️  Redémarrage requis" || echo "✔️ Pas de redémarrage nécessaire"
+    apt update || { echo "❌ Échec de apt update"; return 1; }
+    apt upgrade -y
+    apt full-upgrade -y
+    apt autoremove -y
+    apt autoclean -y
+    if apt-cache show linux-generic &>/dev/null; then
+        apt install --install-recommends linux-generic -y
+    fi
+    command -v ubuntu-drivers &>/dev/null && ubuntu-drivers install || true
+    command -v snap            &>/dev/null && snap refresh           || true
+    command -v flatpak         &>/dev/null && flatpak update -y      || true
+    if [ -f /var/run/reboot-required ]; then
+        echo "⚠️ Redémarrage requis"
+    else
+        echo "✔️ Pas de redémarrage nécessaire"
+    fi
 }
 
 # ==================================================
