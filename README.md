@@ -1,106 +1,254 @@
 # FlameBash
 ![Shell](https://img.shields.io/badge/Shell-Bash-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.1.2-yellow.svg)
+![Version](https://img.shields.io/badge/Version-1.2.0-yellow.svg)
 
-A lightweight and functional `.bashrc` configuration for Linux developers, designed to improve your terminal with a rich prompt, system dashboard, and useful commands.
+A complete Ubuntu Bash configuration that automatically installs and configures a personalized development environment.
 
-## Description
+> ⚠️ **FlameBash is designed exclusively for Ubuntu with GNOME.**
+>
+> The installer uses Ubuntu packages (`apt`) and GNOME settings (`gsettings`). It is **not compatible** with Debian, Fedora, Arch Linux, KDE Plasma, XFCE, or other desktop environments without modifications.
 
-FlameBash turns your Bash shell into a practical and visually appealing development environment. It provides:
+---
 
-- A colorful prompt showing user/host, current directory, Git branch, and repository status
-- A startup system dashboard with OS, kernel, CPU, RAM, disk, IP, and more
-- Useful aliases for Python, Git, and common operations
-- Maintenance commands for updating, cleaning, and reloading the shell
+# Description
 
-## Key Features
+FlameBash transforms a fresh Ubuntu installation into a complete developer environment with:
 
-- **Enhanced prompt**: system and Git information in a clear, colorful prompt
-- **Startup dashboard**: instant overview of system status when opening a terminal
-- **Simplified Git**: `gc`, `gp`, and Git status displayed directly in the prompt
-- **Practical aliases**: `py`, `pyc`, `ll`, `la`, `l`, `venv`, `exe`.
-- **Fast maintenance**: `update`, `clean`, `actu`, `clear`
-- **Bash compatibility**: designed for interactive shells and works with `bash-completion`
+* **A customized `.bashrc`**
+* **A modern terminal setup using Alacritty**
+* **Developer utilities and aliases**
+* **Git shortcuts**
+* **Python virtual environment helpers**
+* **GNOME keyboard shortcuts**
+* **Automatic system configuration**
 
-## Commands
+The installer automatically:
 
-### Git
-- `gc <message>`: stage all changes and create a commit quickly.
-- `gp <message>`: push changes to the remote and optionally create a signed tag.
-- Git status is displayed directly in the prompt for easy tracking.
+* Installs required packages
+* Replaces your current `.bashrc`
+* Configures Alacritty
+* Creates keyboard shortcuts
+* Removes GNOME Terminal
+* Applies the FlameBash environment
 
-### Development
-- `exec <file>`: compile and execute a C program using `gcc -Wall -Wextra -Werror -fsanitize=address -g`, then remove the temporary binary.
-- `venv`: create and activate a local Python virtual environment in `.env`, and update `.gitignore`.
-- `py`: run Python scripts with `python3`.
-- `pyc`: compile a Python script to `.pyc`.
+Only `curl` is required to launch the installation command.
 
-### Maintenance
-- `update`: update Debian/Ubuntu packages, clean packages, refresh drivers, and update snaps/flatpaks.
-- `clean`: remove orphaned packages and clean the APT cache.
-- `actu`: reload the `.bashrc` configuration and refresh the terminal dashboard.
-- `clear`: clear the terminal and redisplay the system dashboard.
+---
 
-## Quick Usage Example
+# Installation
+
+Run:
+
 ```bash
-# Copy the .bashrc file to your home directory
-$ cp FlameBash/.bashrc ~/.bashrc
-
-# Load the configuration
-$ source ~/.bashrc
-
-# Use the included aliases and commands
-$ py script.py
-$ gc "update prompt"
-$ update
-$ actu
+bash <(curl -fsSL https://raw.githubusercontent.com/USERNAME/FlameBash/main/install.sh)
 ```
 
-## Usage Examples
+The installer will automatically configure your system.
 
-### Check Git status and create a quick commit
-```bash
-$ gc "update documentation"
-# adds all files and creates a commit
+---
+
+# Installed Packages
+
+FlameBash automatically installs:
+
+| Package        | Purpose                       |
+| -------------- | ----------------------------- |
+| `git`          | Git version control           |
+| `python3-venv` | Python virtual environments   |
+| `alacritty`    | Fast GPU-accelerated terminal |
+
+---
+
+# Keyboard Shortcuts
+
+FlameBash automatically creates the following GNOME shortcuts:
+
+| Shortcut        | Action         |
+| --------------- | -------------- |
+| `Super + Enter` | Open Alacritty |
+| `Super + E`     | Open Nautilus  |
+
+### Examples
+
+Open a terminal instantly:
+
+```text
+Press Super + Enter
 ```
 
-### Push to remote with a tag
-```bash
-$ gp "v1.0.0"
-# pushes changes and creates a signed tag if needed
+Open the file manager:
+
+```text
+Press Super + E
 ```
 
-### Use Python aliases
+---
+
+# Bash Shortcuts & Commands
+
+FlameBash includes several commands designed to simplify everyday development tasks.
+
+## Git
+
+### Quick Commit
+
 ```bash
-$ py my_script.py
-$ pyc my_script.py
+gc "commit message"
 ```
 
-### Compile and execute a C program
+Example:
+
 ```bash
-$ exe program.c
-# compiles program.c with gcc and runs the resulting binary
+gc "update README"
 ```
 
-### Reload your configuration after editing
+Automatically stages all modified files and creates a commit.
+
+---
+
+### Quick Push
+
 ```bash
-$ actu
+gp "v1.0.0"
 ```
 
-### Clean the system and APT cache
+Pushes changes to the remote repository and can create a tag if configured.
+
+---
+
+## Python
+
+### Run a Python Script
+
 ```bash
-$ update
-$ clean
+py script.py
 ```
 
-## Installation
+Example:
 
-1. Copy or symlink the `.bashrc` file to your home directory.
-2. Load the configuration:
 ```bash
-$ source ~/.bashrc
+py main.py
 ```
 
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+---
+
+### Compile Python Bytecode
+
+```bash
+pyc script.py
+```
+
+Example:
+
+```bash
+pyc main.py
+```
+
+---
+
+### Create a Virtual Environment
+
+```bash
+venv
+```
+
+Creates:
+
+```text
+.env/
+```
+
+Activates it automatically and updates `.gitignore` when needed.
+
+---
+
+## C Development
+
+Compile and execute a C file in a single command:
+
+```bash
+exe program.c
+```
+
+Example:
+
+```bash
+exe main.c
+```
+
+Compilation flags:
+
+```text
+-Wall
+-Wextra
+-Werror
+-fsanitize=address
+-g
+```
+
+The temporary executable is removed after execution.
+
+---
+
+# Maintenance Commands
+
+## Update Ubuntu
+
+```bash
+update
+```
+
+Updates:
+
+* APT packages
+* Snap packages
+* Flatpak packages (if installed)
+
+---
+
+## Clean the System
+
+```bash
+clean
+```
+
+Removes:
+
+* Unused packages
+* Orphaned dependencies
+* Cached APT packages
+
+---
+
+## Reload FlameBash
+
+```bash
+actu
+```
+
+Reloads:
+
+```bash
+~/.bashrc
+```
+
+and refreshes the terminal environment.
+
+---
+
+# Requirements
+
+## Supported
+
+* Ubuntu 22.04+
+* Ubuntu 24.04+
+* GNOME Desktop
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+See the `LICENSE` file for details.
