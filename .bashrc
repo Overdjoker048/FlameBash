@@ -8,13 +8,6 @@ esac
 
 
 # ==================================================
-# COLORS (LABELS ONLY)
-# ==================================================
-C_LABEL="\e[38;2;255;165;0m"
-C_RESET="\e[0m"
-
-
-# ==================================================
 # STARTUP DISPLAY
 # ==================================================
 display() {
@@ -63,23 +56,23 @@ display() {
 "\e[38;2;255;165;0m                    .\e[0m"
 "\e[38;2;255;160;0m                 .~5P.\e[0m             \e[1m$USER@$HOST\e[0m"
 "\e[38;2;255;155;0m               :JB&&G:\e[0m             ==============================="
-"\e[38;2;255;150;0m             ^YB&&&#P^\e[0m             ${C_LABEL}OS:${C_RESET}         $OS"
-"\e[38;2;255;145;0m           :JGB####B5!\e[0m             ${C_LABEL}Kernel:${C_RESET}     $KERNEL"
-"\e[38;2;255;140;0m         .~5GBBGGGGG5J:\e[0m            ${C_LABEL}Arch:${C_RESET}       $ARCH"
-"\e[38;2;255;135;0m        .~5PPPPPP5555J?:\e[0m           ${C_LABEL}Uptime:${C_RESET}     $UPTIME"
-"\e[38;2;255;130;0m       .J555YYYYJJJJJ??!:\e[0m          ${C_LABEL}Model:${C_RESET}      $PC_MODEL"
-"\e[38;2;255;125;0m      .!5YYJJ???77777!!7!^.\e[0m        ${C_LABEL}CPU:${C_RESET}        $CPU"
-"\e[38;2;255;120;0m     !7:~JJJ??777!!!~~~~~!!^.\e[0m      ${C_LABEL}GPU:${C_RESET}        $GPU"
-"\e[38;2;255;115;0m    ^PP57'^~7?77!!!~~~^^^~~~!!^\e[0m    ${C_LABEL}RAM:${C_RESET}        $RAM_TOTAL"
-"\e[38;2;255;110;0m   .Y5555Y!:^!77!~~~^^^^^^~~!!!.\e[0m   ${C_LABEL}Disk:${C_RESET}       $DISK"
-"\e[38;2;255;105;0m   !5YJJJJJ?~..^!!~~^^^^~~~~!!7?:\e[0m  ${C_LABEL}Packages:${C_RESET}   $PKG_COUNT"
-"\e[38;2;255;100;0m  .JJ???777777: .^!!~~~~~~!!!77?7\e[0m  ${C_LABEL}Shell:${C_RESET}      $SHELL_NAME"
-"\e[38;2;255;95;0m  :J?77!!!~~~!!~. .~7!!!!!7777?J7\e[0m  ${C_LABEL}Session:${C_RESET}    $SESSION_TYPE"
-"\e[38;2;255;90;0m  .??7!!~~^^^^~!!. .~?77777???J?.\e[0m  ${C_LABEL}TTY:${C_RESET}        $TTY_NAME"
-"\e[38;2;255;85;0m   ^?77!~~^^^~~!7^ .^?????JJJJ!.\e[0m   ${C_LABEL}Resolution:${C_RESET} $RESOLUTION"
-"\e[38;2;255;80;0m    .~777!!!!!!!7! .~JJJJYYJ!.\e[0m     ${C_LABEL}Virt:${C_RESET}       $VIRT"
-"\e[38;2;255;75;0m      .:!7?7777??~ .!YY5YJ~.\e[0m       ${C_LABEL}Init:${C_RESET}       $INIT_SYSTEM"
-"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m          ${C_LABEL}Version:${C_RESET}    1.1.2"
+"\e[38;2;255;150;0m             ^YB&&&#P^\e[0m             \e[38;2;255;165;0mOS:\e[0m         $OS"
+"\e[38;2;255;145;0m           :JGB####B5!\e[0m             \e[38;2;255;165;0mKernel:\e[0m     $KERNEL"
+"\e[38;2;255;140;0m         .~5GBBGGGGG5J:\e[0m            \e[38;2;255;165;0mArch:\e[0m       $ARCH"
+"\e[38;2;255;135;0m        .~5PPPPPP5555J?:\e[0m           \e[38;2;255;165;0mUptime:\e[0m     $UPTIME"
+"\e[38;2;255;130;0m       .J555YYYYJJJJJ??!:\e[0m          \e[38;2;255;165;0mModel:\e[0m      $PC_MODEL"
+"\e[38;2;255;125;0m      .!5YYJJ???77777!!7!^.\e[0m        \e[38;2;255;165;0mCPU:\e[0m        $CPU"
+"\e[38;2;255;120;0m     !7:~JJJ??777!!!~~~~~!!^.\e[0m      \e[38;2;255;165;0mGPU:\e[0m        $GPU"
+"\e[38;2;255;115;0m    ^PP57'^~7?77!!!~~~^^^~~~!!^\e[0m    \e[38;2;255;165;0mRAM:\e[0m        $RAM_TOTAL"
+"\e[38;2;255;110;0m   .Y5555Y!:^!77!~~~^^^^^^~~!!!.\e[0m   \e[38;2;255;165;0mDisk:\e[0m       $DISK"
+"\e[38;2;255;105;0m   !5YJJJJJ?~..^!!~~^^^^~~~~!!7?:\e[0m  \e[38;2;255;165;0mPackages:\e[0m   $PKG_COUNT"
+"\e[38;2;255;100;0m  .JJ???777777: .^!!~~~~~~!!!77?7\e[0m  \e[38;2;255;165;0mShell:\e[0m      $SHELL_NAME"
+"\e[38;2;255;95;0m  :J?77!!!~~~!!~. .~7!!!!!7777?J7\e[0m  \e[38;2;255;165;0mSession:\e[0m    $SESSION_TYPE"
+"\e[38;2;255;90;0m  .??7!!~~^^^^~!!. .~?77777???J?.\e[0m  \e[38;2;255;165;0mTTY:\e[0m        $TTY_NAME"
+"\e[38;2;255;85;0m   ^?77!~~^^^~~!7^ .^?????JJJJ!.\e[0m   \e[38;2;255;165;0mResolution:\e[0m $RESOLUTION"
+"\e[38;2;255;80;0m    .~777!!!!!!!7! .~JJJJYYJ!.\e[0m     \e[38;2;255;165;0mVirt:\e[0m       $VIRT"
+"\e[38;2;255;75;0m      .:!7?7777??~ .!YY5YJ~.\e[0m       \e[38;2;255;165;0mInit:\e[0m       $INIT_SYSTEM"
+"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m          \e[38;2;255;165;0mVersion:\e[0m    1.2.0"
 "\e[38;2;255;65;0m            .:!JY. .~.\e[0m "
     )
 
@@ -190,7 +183,24 @@ alias clear='clear; display'
 alias clean='sudo apt autoremove -y && sudo apt autoclean -y'
 alias actu='source ~/.bashrc && clear'
 alias py='python3'
-alias pyc='python3 -OO -c "import py_compile, sys; py_compile.compile(sys.argv[1], cfile=\"./\" + sys.argv[1].replace(\".py\", \".pyc\"))"'   
+alias pyc='f(){
+  if ! python3 -m nuitka --version >/dev/null 2>&1; then
+    python3 -m pip install --user -U nuitka
+  fi
+
+  python3 -m nuitka "$1" \
+    --standalone \
+    --onefile \
+    --lto=yes \
+    --clang \
+    --follow-imports \
+    --assume-yes-for-downloads \
+    --enable-plugin=anti-bloat \
+    --python-flag=no_docstrings \
+    --python-flag=no_annotations \
+    --remove-output \
+    --run
+}; f'
 
 # ==================================================
 # UPDATE COMMAND
