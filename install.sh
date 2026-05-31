@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+sudo apt upgrade -y
+sudo apt autoremove -y && sudo apt autoclean -y
 sudo apt update
 sudo apt install -y git python3-venv alacritty nautilus
 
