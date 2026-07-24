@@ -1,7 +1,7 @@
 # FlameBash
 ![Shell](https://img.shields.io/badge/Shell-Bash-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.2.1-yellow.svg)
+![Version](https://img.shields.io/badge/Version-1.2.2-yellow.svg)
 
 A complete Ubuntu Bash configuration that automatically installs and configures a personalized development environment.
 

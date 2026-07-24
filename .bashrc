@@ -10,39 +10,31 @@ esac
 # ==================================================
 # STARTUP DISPLAY
 # ==================================================
+ARCH="$(uname -m)"
+CPU="$(awk -F: '/model name/ {print $2; exit}' /proc/cpuinfo | sed 's/^ //')"
+GPU="$(lspci 2>/dev/null | grep -Ei 'vga|3d' | head -n1 | cut -d ':' -f3- | sed -E 's/^[ \t]*//; s/( Corporation| Inc\.|[\[\]\(\)]|\(rev [0-9a-f]+\))//g')"
+RAM_TOTAL="$(free -h | awk '/Mem:/ {print $2}')"
+SHELL_NAME="$(basename "$SHELL")"
+PC_MODEL="$(cat /sys/devices/virtual/dmi/id/product_name 2>/dev/null)"
+[ -z "$PC_MODEL" ] && PC_MODEL="Unknown"
+
+
 display() {
     OS="$(. /etc/os-release 2>/dev/null && echo "$PRETTY_NAME")"
     KERNEL="$(uname -r)"
     HOST="$(hostname)"
-    ARCH="$(uname -m)"
     UPTIME="$(uptime -p | sed 's/up //')"
 
-    CPU="$(awk -F: '/model name/ {print $2; exit}' /proc/cpuinfo | sed 's/^ //')"
-    GPU="$(lspci 2>/dev/null | grep -Ei 'vga|3d' | head -n1 | cut -d ':' -f3- | sed -E 's/^[ \t]*//; s/( Corporation| Inc\.|[\[\]\(\)]|\(rev [0-9a-f]+\))//g')"
-    RAM_TOTAL="$(free -h | awk '/Mem:/ {print $2}')"
     DISK="$(df -h / | awk 'NR==2 {print $3 "/" $2 " (" $5 ")"}')"
 
-    IP="$(ip route get 1 2>/dev/null | awk '{print $7; exit}')"
-    SHELL_NAME="$(basename "$SHELL")"
     SESSION_TYPE="$([ -n "$SSH_CONNECTION" ] && echo "SSH" || echo "Local")"
     TTY_NAME="$(tty | sed 's|/dev/||')"
 
-    # PC MODEL (safe, no root)
-    PC_MODEL="$(cat /sys/devices/virtual/dmi/id/product_name 2>/dev/null)"
-    [ -z "$PC_MODEL" ] && PC_MODEL="Unknown"
-
-    # Virtualization
-    VIRT="$(systemd-detect-virt 2>/dev/null)"
-    [ -z "$VIRT" ] && VIRT="Bare metal"
-
-    # Init system
     INIT_SYSTEM="$(ps -p 1 -o comm=)"
 
-    # Resolution (if graphical)
     RESOLUTION="$(command -v xrandr &>/dev/null && xrandr | awk '/\*/ {print $1; exit}')"
     [ -z "$RESOLUTION" ] && RESOLUTION="N/A"
 
-    # Package count
     if command -v dpkg &>/dev/null; then
         PKG_COUNT="$(dpkg -l | wc -l)"
     elif command -v pacman &>/dev/null; then
@@ -70,9 +62,9 @@ display() {
 "\e[38;2;255;95;0m  :J?77!!!~~~!!~. .~7!!!!!7777?J7\e[0m  \e[38;2;255;165;0mSession:\e[0m    $SESSION_TYPE"
 "\e[38;2;255;90;0m  .??7!!~~^^^^~!!. .~?77777???J?.\e[0m  \e[38;2;255;165;0mTTY:\e[0m        $TTY_NAME"
 "\e[38;2;255;85;0m   ^?77!~~^^^~~!7^ .^?????JJJJ!.\e[0m   \e[38;2;255;165;0mResolution:\e[0m $RESOLUTION"
-"\e[38;2;255;80;0m    .~777!!!!!!!7! .~JJJJYYJ!.\e[0m     \e[38;2;255;165;0mVirt:\e[0m       $VIRT"
-"\e[38;2;255;75;0m      .:!7?7777??~ .!YY5YJ~.\e[0m       \e[38;2;255;165;0mInit:\e[0m       $INIT_SYSTEM"
-"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m          \e[38;2;255;165;0mVersion:\e[0m    1.2.1"
+"\e[38;2;255;80;0m    .~777!!!!!!!7! .~JJJJYYJ!.\e[0m     \e[38;2;255;165;0mInit:\e[0m       $INIT_SYSTEM"
+"\e[38;2;255;75;0m      .:!7?7777??~ .!YY5YJ~.\e[0m       \e[38;2;255;165;0mVersion:\e[0m    1.2.2"
+"\e[38;2;255;70;0m         .^!?JJJY^ .J5J!:\e[0m"
 "\e[38;2;255;65;0m            .:!JY. .~.\e[0m "
     )
 
@@ -106,7 +98,7 @@ shopt -s checkwinsize
 VIRTUAL_ENV_DISABLE_PROMPT=1
 
 __venv_segment() {
-    [ -n "$VIRTUAL_ENV" ] && printf "\e[38;2;255;157;0m⬡ \e[0m"
+    [ -n "$VIRTUAL_ENV" ] && printf "\e[38;2;255;157;0m🖥 \e[0m"
 }
 
 __git_segment() {
@@ -127,6 +119,7 @@ fi
 # ==================================================
 # GCC ALIASES
 # ==================================================
+#exe <file> <tags>
 exe() {
     if [ $# -eq 0 ]; then
         echo "Usage : exe fichier.c"
@@ -169,12 +162,15 @@ fi \
 # ==================================================
 # ALIASES
 # ==================================================
+#venv -> python3 -m venv .env + source .env/bin/activate
 venv() {
     if [ ! -d ".env" ]; then
         python3 -m venv .env
     fi
     source .env/bin/activate
 }
+
+
 
 alias ll='ls -alF'
 alias la='ls -A'
